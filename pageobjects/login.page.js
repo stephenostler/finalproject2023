@@ -1,15 +1,16 @@
 const { $ } = require('@wdio/globals')
-const Page = require('./page');
+const Page = require('./page.js');
 const { expect } = require('@wdio/globals')
+const Credentials = require('./credentials.js');
 
 class LoginPage extends Page {
    
     get inputUsername () {
-        return $('[data-testid="inputEmail"]');
+        return $('[name="email"]');
     }
 
     get inputPassword () {
-        return $('[data-testid="inputPassword"]');
+        return $('[name="password"]');
     }
 
     get btnSignin () {
@@ -29,7 +30,7 @@ class LoginPage extends Page {
     }
 
     get cookieAccept (){
-        return $('//div/button[@id="onetrust-accept-btn-handler"]');
+        return $('[id="onetrust-accept-btn-handler"]');
     }
 
     get wrapperEN (){
@@ -40,7 +41,7 @@ class LoginPage extends Page {
         return $('locale-selector-close-button');
     }
     async cookieClick(){
-        await this.cookieAccept.doubleClick;
+        await this.cookieAccept.click;
     }
 
     async wrapClick(){
@@ -51,42 +52,40 @@ class LoginPage extends Page {
         return $('[class="ot-sdk-container"]');
     }
 
-    get frame(){
-        return $('[id="onetrust-banner-sdk"]');
+    get banner(){
+        return $('[aria-label="Cookie banner"]');
     }
 
     async login () {
         await browser.setCookies([
             {name:'OptanonAlertBoxClosed',value: '2023-11-07T19:18:17.692Z',},
             {name:'gw-locale',value:'en-US'},
-            // {name:'_hjAbsoluteSessionInProgress',value:'0'},
-            // {name: '_hjIncludedInSessionSample_2455086', value: '1'},
-            // {name: '_hjSessionUser_2455086', value: 'eyJpZCI6IjBhYzgxNzM4LTc2ZTEtNWI4MC04NjZmLTNmYWI5NTllYzZhNyIsImNyZWF0ZWQiOjE2OTkzODQ2OTc5NzAsImV4aXN0aW5nIjp0cnVlfQ=='},
-
+        
         ]);
-        // await browser.pause(2000);
-        // await browser.switchToFrame(this.frame);
-        // await browser.switchToParentFrame();
-        // await this.cookiePop.waitForExist({setTimeout:2000});
-        // await expect(this.cookiePop).toBeExisting;
-        // await this.cookieAccept.waitForClickable({setTimeout: 20000});
-        // await this.cookieClick();
-        // await expect(this.wrapperEN).toBeExisting;
-        // await this.wrapperEN.waitForClickable({setTimeout: 20000});
-        // await this.wrapClick();
-        // await browser.pause(3000);
-        // await this.closeLang.waitForClickable({timeout:5000});
-        // await this.closeLang.click;
+        // await browser.pause(5000);
+        // await browser.refresh();
+        // await this.cookieAccept.moveTo;
+        // await this.cookieAccept.waitForEnabled({setTimeout:3000});
+        // await this.cookieAccept.click();
+        // await this.closeLang.waitForEnabled({setTimeout:3000});
+        // await this.closeLang.click();
+        await browser.refresh();
         await this.accountLoginBtn.waitForClickable({setTimeout:500});
         await this.accountLoginBtn.click();
+        await browser.pause(3000);
+        // await this.banner.waitForExist();
+        await this.cookieAccept.waitForEnabled({setTimeout:2000});
+        await this.cookieAccept.click();
         await expect(this.accountCheck).toBeExisting;
-        await this.inputUsername.setValue('stephen.ostler0120@stu.mtec.edu');
-        await this.inputPassword.setValue('K@pp@tun@3');
+        await browser.pause(5000);
+        await this.inputUsername.click();
+        await this.inputUsername.setValue(Credentials.username);
+        await this.inputPassword.setValue(Credentials.password);
         await this.btnSignin.click();
         
         
     }
-// 'stephen.ostler0120@stu.mtec.edu' 'K@pp@tun@3'
+// username and password are from credentials file
    
     open () {
         return super.open();
