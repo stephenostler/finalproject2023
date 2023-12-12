@@ -1,6 +1,6 @@
-const { $ } = require('@wdio/globals')
+const { $ } = require('@wdio/globals');
 const Page = require('./page.js');
-const { expect } = require('@wdio/globals')
+const { expect } = require('@wdio/globals');
 const Credentials = require('./credentials.js');
 
 class LoginPage extends Page {
@@ -40,13 +40,6 @@ class LoginPage extends Page {
     get closeLang (){
         return $('locale-selector-close-button');
     }
-    async cookieClick(){
-        await this.cookieAccept.click;
-    }
-
-    async wrapClick(){
-        await this.wrapperEN.doubleClick;
-    }
 
     get cookiePop(){
         return $('[class="ot-sdk-container"]');
@@ -62,19 +55,11 @@ class LoginPage extends Page {
             {name:'gw-locale',value:'en-US'},
         
         ]);
-        // await browser.pause(5000);
-        // await browser.refresh();
-        // await this.cookieAccept.moveTo;
-        // await this.cookieAccept.waitForEnabled({setTimeout:3000});
-        // await this.cookieAccept.click();
-        // await this.closeLang.waitForEnabled({setTimeout:3000});
-        // await this.closeLang.click();
         await browser.refresh();
-        await this.accountLoginBtn.waitForClickable({setTimeout:500});
+        await this.accountLoginBtn.waitForClickable({setTimeout:2000});
         await this.accountLoginBtn.click();
         await browser.pause(3000);
-        // await this.banner.waitForExist();
-        await this.cookieAccept.waitForEnabled({setTimeout:2000});
+        await this.cookieAccept.waitForClickable({setTimeout:2000});
         await this.cookieAccept.click();
         await expect(this.accountCheck).toBeExisting;
         await browser.pause(5000);

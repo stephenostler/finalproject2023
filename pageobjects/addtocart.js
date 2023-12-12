@@ -1,16 +1,36 @@
-const { $ } = require('@wdio/globals')
-const Page = require('./page');
+const { $ } = require('@wdio/globals');
+const Page = require('./page.js');
+const { expect } = require('@wdio/globals');
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
-class SecurePage extends Page {
-    /**
-     * define selectors using getter methods
-     */
-    get flashAlert () {
-        return $('#flash');
+class addItem extends Page {
+    
+    get shopBtn (){
+        return $('[data-testid="navigation-button-0"]')
     }
+
+    get wh40kShop (){
+        return $('[data-testid="nav-section-button-1-0"]')
+    }
+
+    get chaosShop (){
+        return $('[data-testid="nav-section-button-1-2"]')
+    }
+
+    get chaosArmy (){
+        return $('[data-testid="navigation-slug-0-0"]')
+    }
+
+    get chaosTyrant (){
+        return $('[data-testid="product-card-Knight Tyrant"]')
+    }
+
+    get homeCheck(){
+        return $('[data-testid="video-banner"]')
+    }
+    async tyrant (){
+        await expect(this.homeCheck).toBeExisting;
+    }
+
 }
 
-module.exports = new SecurePage();
+module.exports = new addItem();

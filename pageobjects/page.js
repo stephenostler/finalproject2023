@@ -5,5 +5,3 @@ module.exports = class Page {
         return browser.url(`https://www.warhammer.com/en-US/home`)
     }
 }
-
-//#onetrust-accept-btn-handler for="en-US"
