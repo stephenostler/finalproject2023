@@ -56,13 +56,9 @@ class LoginPage extends Page {
         
         ]);
         await browser.refresh();
-        await this.accountLoginBtn.waitForClickable({setTimeout:2000});
         await this.accountLoginBtn.click();
-        await browser.pause(3000);
-        await this.cookieAccept.waitForClickable({setTimeout:2000});
         await this.cookieAccept.click();
         await expect(this.accountCheck).toBeExisting;
-        await browser.pause(5000);
         await this.inputUsername.click();
         await this.inputUsername.setValue(Credentials.username);
         await this.inputPassword.setValue(Credentials.password);
