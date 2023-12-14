@@ -60,6 +60,20 @@ class addItem extends Page {
         await this.checkoutNow.click();
         
     }
+    
+    async tyrantCart (){
+        await browser.refresh();
+        await LoginPage.cookieAccept.click();
+        await expect(this.homeCheck).toBeExisting;
+        await this.shopBtn.click();
+        await this.wh40kShop.click();
+        await this.chaosShop.click();
+        await this.chaosArmy.click();
+        await this.chaosTyrant.click();
+        await this.addCart.click();
+        await this.cartLink.click();
+        
+    }
 
     open () {
         return super.open();
