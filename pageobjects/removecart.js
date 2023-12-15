@@ -13,13 +13,20 @@ class clearCart extends Page {
     }
 
     async removeAll () {
-         while (await this.removeItem.isClickable()) {
-            await this.removeItem.click()
-             if (await this.emptyCart.toBeExisting()) {
-                break;
-      }
-    }}
+        do{this.removeItem.click();
+        expect(this.removeItem).toBeExisting;}
+        while ((await this.removeItem).isEnabled());
+    
+    }
 
+    async cartCheck(){
+        await expect(this.emptyCart).toBeEnabled;
+    }
+    // {
+        //         // await this.removeItem.click()
+        //         //  if ((await this.emptyCart).isEnabled) {
+        //         //     break;
+        //   }
     async removal(){
         await this.removeItem.click;
         await expect(this.emptyCart).toBeExisting;
