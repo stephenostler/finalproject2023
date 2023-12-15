@@ -123,6 +123,7 @@ class addItem extends Page {
         await this.orderShop.click();
         await this.kharaArmy.click();
         await this.kharaCodewright.click();
+        await this.addCart.waitForClickable({setTimeout:2000});
         await this.addCart.click();
         await this.closePop.waitForClickable({setTimeout:2000});
         await this.closePop.click();
@@ -132,6 +133,7 @@ class addItem extends Page {
         await this.middleearthShop.click();
         await this.lotrGood.click();
         await this.minasHost.click();
+        await this.addCart.waitForClickable({setTimeout:2000});
         await this.addCart.click();
         await this.closePop.waitForClickable({setTimeout:2000});
         await this.closePop.click();
