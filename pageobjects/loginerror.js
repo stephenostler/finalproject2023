@@ -67,6 +67,3 @@ class loginError extends Page {
 }
 
 module.exports = new loginError();
-// data-testid="errorEmail" for email input not looking like email or nothing in field
-// data-testid ="errorPassword" password less than 8 characters or nothing in field
-// data-testid ="generalError" issue with email or password that meet above reqs
