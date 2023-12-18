@@ -6,6 +6,5 @@ describe('My Shopping application', () => {
         await addItem.open();
         await addItem.multiCart();
         await clearCart.removeAll();
-        await browser.pause(4000);
     })
 })

@@ -16,6 +16,13 @@ class logoutAccount extends Page {
         await this.logoutBtn.waitForClickable({setTimeout:2000})
         await this.logoutBtn.click();
     }
+
+    async logoutOverall(){
+        await LoginPage.accountLogoutBtn.click();
+        await expect(this.logoutBtn).toBeExisting;
+        await this.logoutBtn.waitForClickable({setTimeout:2000})
+        await this.logoutBtn.click();
+    }
 }
 
 module.exports = new logoutAccount();

@@ -89,6 +89,22 @@ class addItem extends Page {
         await this.cartLink.click();
         await this.checkoutNow.click();
     }
+
+    async tyrantOverall(){
+        await this.shopBtn.click();
+        await this.wh40kShop.waitForClickable();
+        await this.wh40kShop.click();
+        await this.chaosShop.waitForClickable();
+        await this.chaosShop.click();
+        await this.chaosArmy.waitForClickable();
+        await this.chaosArmy.click();
+        await this.chaosTyrant.waitForClickable();
+        await this.chaosTyrant.click();
+        await this.addCart.waitForClickable();
+        await this.addCart.click();
+        await this.cartLink.waitForClickable();
+        await this.cartLink.click();
+    }
     
     async tyrantCart (){
         await browser.refresh();
@@ -116,7 +132,6 @@ class addItem extends Page {
         await this.addCart.click();
         await this.closePop.waitForClickable({setTimeout:2000});
         await this.closePop.click();
-        // await browser.pause(2000);
         await this.shopBtn.click();
         await this.sigmarShop.waitForClickable({setTimeout:3000});
         await this.sigmarShop.click();
@@ -127,7 +142,40 @@ class addItem extends Page {
         await this.addCart.click();
         await this.closePop.waitForClickable({setTimeout:2000});
         await this.closePop.click();
-        // await browser.pause(2000);
+        await this.shopBtn.click();
+        await this.middleearthShop.waitForClickable({setTimeout:3000})
+        await this.middleearthShop.click();
+        await this.lotrGood.waitForClickable({setTimeout:3000});
+        await this.lotrGood.click();
+        await this.minasHost.click();
+        await this.addCart.waitForClickable({setTimeout:2000});
+        await this.addCart.click();
+        await this.closePop.waitForClickable({setTimeout:2000});
+        await this.closePop.click();
+        await this.cartLink.click();
+    }
+
+    async multiCartOverall (){
+        await expect(this.homeCheck).toBeExisting;
+        await this.shopBtn.click();
+        await this.wh40kShop.click();
+        await this.chaosShop.click();
+        await this.chaosArmy.click();
+        await this.chaosTyrant.click();
+        await this.addCart.click();
+        await this.closePop.waitForClickable({setTimeout:2000});
+        await this.closePop.click();
+        await this.shopBtn.click();
+        await this.sigmarShop.waitForClickable({setTimeout:3000});
+        await this.sigmarShop.click();
+        await this.orderShop.waitForClickable({setTimeout:3000});
+        await this.orderShop.click();
+        await this.kharaArmy.click();
+        await this.kharaCodewright.click();
+        await this.addCart.waitForClickable({setTimeout:2000});
+        await this.addCart.click();
+        await this.closePop.waitForClickable({setTimeout:2000});
+        await this.closePop.click();
         await this.shopBtn.click();
         await this.middleearthShop.waitForClickable({setTimeout:3000})
         await this.middleearthShop.click();
@@ -137,7 +185,6 @@ class addItem extends Page {
         await this.addCart.click();
         await this.closePop.waitForClickable({setTimeout:2000});
         await this.closePop.click();
-        // await browser.pause(2000);
         await this.cartLink.click();
     }
 
